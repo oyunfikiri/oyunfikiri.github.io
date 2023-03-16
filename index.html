@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rastgele Oyun Fikirleri Üreticisi</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f2f2f2;
+		}
+
+		header {
+			background-color: #333;
+			color: white;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			margin: 0;
+			font-size: 48px;
+			text-transform: uppercase;
+		}
+
+		main {
+			margin: 20px;
+			background-color: white;
+			padding: 20px;
+			box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+			border-radius: 5px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: relative;
+		}
+
+		button {
+			padding: 10px 20px;
+			border-radius: 5px;
+			border: none;
+			background-color: #333;
+			color: white;
+			cursor: pointer;
+			font-size: 24px;
+			margin-top: 20px;
+			text-transform: uppercase;
+		}
+
+		.spinner {
+			position: absolute;
+			top: calc(50% - 25px);
+			left: calc(50% - 25px);
+			width: 50px;
+			height: 50px;
+			border: 5px solid #333;
+			border-top-color: transparent;
+			border-radius: 50%;
+			animation: spin 1s ease-in-out infinite;
+			display: none;
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		p {
+			margin: 20px;
+			font-size: 32px;
+			text-align: center;
+			line-height: 1.5;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Rastgele Oyun Fikirleri Üreticisi</h1>
+	</header>
+	<main>
+		<div class="spinner"></div>
+		<p>Fikir üretmek için aşağıdaki butona tıklayın:</p>
+		<button onclick="generateIdea()">Fikir Üret</button>
+		<p id="idea"></p>
+	</main>
+	<script>
+		function generateIdea() {
+			const temalar = ['zombi kıyameti', 'uzay keşfi', 'ortaçağ fantezisi', 'sonrası-apokaliptik çöplük', 'cyberpunk şehir', 'süper kahraman', 'korsan macerası', 'zaman yolculuğu'];
+			const türler = ['aksiyon', 'macera', 'strateji', 'rol yapma', 'simülasyon', 'spor', 'bulmaca', 'hayatta kalma'];
+			const mekanikler = ['platform', 'ateş etme', 'dövüş', 'gizlilik', 'açık dünya','kule savunması', 'kart oyunu', 'masa oyunu'];
+            		// Fikir oluşturulurken spinner göster
+		const spinner = document.querySelector('.spinner');
+		spinner.style.display = 'block';
+
+		// Fikir üretme işlemi
+		setTimeout(() => {
+			// Rastgele tema, tür ve mekaniklerden birer tane seç
+			const tema = temalar[Math.floor(Math.random() * temalar.length)];
+			const tür = türler[Math.floor(Math.random() * türler.length)];
+			const mekanik = mekanikler[Math.floor(Math.random() * mekanikler.length)];
+
+			// Fikir yazısı oluştur ve ekrana göster
+			const fikirYazisi = `Bir ${tema} temasında, ${tür} türünde, ${mekanik} mekaniğiyle bir oyun.`;
+			document.querySelector('#idea').textContent = fikirYazisi;
+
+			// Spinner gizle
+			spinner.style.display = 'none';
+		}, 1500);
+	}
+</script>
+</body>
+</html>
